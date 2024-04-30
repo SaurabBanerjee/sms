@@ -1,7 +1,11 @@
 import TableComponent from "./shared/Table";
 import DropdownComponent from "./shared/Dropdown";
-import { Table } from "react-bootstrap";
+import { Col, Row, Table } from "react-bootstrap";
 import { useState } from "react";
+import Header from "./Header";
+import Footer from "./Footer";
+import Container from "react-bootstrap/Container";
+import NavigationBar from "./NavigationBar";
 
 export default function Home() {
   const header = [
@@ -99,80 +103,100 @@ export default function Home() {
   };
   return (
     <div>
-      <Table>
-        <tbody>
-          <tr>
-            <td>
-              <DropdownComponent
-                selectedValue={selectedValue}
-                type="Name"
-                data={[
-                  { id: 1, value: "Soumen" },
-                  { id: 2, value: "Saurab" },
-                  { id: 3, value: "Subrata" },
-                  { id: 1, value: "Pramita" },
-                ]}
-                updateData={updateData}
-                initial={initial}
-              ></DropdownComponent>
-            </td>
-            <td>
-              <DropdownComponent
-                selectedValue={selectedValue}
-                type="Class"
-                data={[
-                  { id: 1, value: "10" },
-                  { id: 2, value: "08" },
-                  { id: 3, value: "07" },
-                  { id: 1, value: "06" },
-                ]}
-                updateData={updateData}
-                initial={initial}
-              ></DropdownComponent>
-            </td>
-            <td>
-              <DropdownComponent
-                selectedValue={selectedValue}
-                type="Section"
-                data={[
-                  { id: 1, value: "A" },
-                  { id: 2, value: "B" },
-                  { id: 3, value: "C" },
-                  { id: 1, value: "D" },
-                ]}
-                updateData={updateData}
-                initial={initial}
-              ></DropdownComponent>
-            </td>
-            <td>
-              <DropdownComponent
-                selectedValue={selectedValue}
-                type="Roll No"
-                data={[
-                  { id: 1, value: "4" },
-                  { id: 2, value: "3" },
-                  { id: 3, value: "2" },
-                  { id: 1, value: "1" },
-                ]}
-                updateData={updateData}
-                initial={initial}
-              ></DropdownComponent>
-            </td>
-            <td>
-              <button onClick={resetFilter}>Rest Filter</button>
-            </td>
-          </tr>
-        </tbody>
-      </Table>
-      <Table>
-        <tbody>
-          <tr>
-            <td>
-              <TableComponent header={header} data={inputData}></TableComponent>
-            </td>
-          </tr>
-        </tbody>
-      </Table>
+      <Container fluid>
+        <Container fluid>
+          <Header></Header>
+        </Container>
+        <Container fluid>
+          <Row>
+            <Col xs={2}>
+              <NavigationBar />
+            </Col>
+            <Col xs={10}>
+              <Table>
+                <tbody>
+                  <tr>
+                    <td>
+                      <DropdownComponent
+                        selectedValue={selectedValue}
+                        type="Name"
+                        data={[
+                          { id: 1, value: "Soumen" },
+                          { id: 2, value: "Saurab" },
+                          { id: 3, value: "Subrata" },
+                          { id: 1, value: "Pramita" },
+                        ]}
+                        updateData={updateData}
+                        initial={initial}
+                      ></DropdownComponent>
+                    </td>
+                    <td>
+                      <DropdownComponent
+                        selectedValue={selectedValue}
+                        type="Class"
+                        data={[
+                          { id: 1, value: "10" },
+                          { id: 2, value: "08" },
+                          { id: 3, value: "07" },
+                          { id: 1, value: "06" },
+                        ]}
+                        updateData={updateData}
+                        initial={initial}
+                      ></DropdownComponent>
+                    </td>
+                    <td>
+                      <DropdownComponent
+                        selectedValue={selectedValue}
+                        type="Section"
+                        data={[
+                          { id: 1, value: "A" },
+                          { id: 2, value: "B" },
+                          { id: 3, value: "C" },
+                          { id: 1, value: "D" },
+                        ]}
+                        updateData={updateData}
+                        initial={initial}
+                      ></DropdownComponent>
+                    </td>
+                    <td>
+                      <DropdownComponent
+                        selectedValue={selectedValue}
+                        type="RollNo"
+                        data={[
+                          { id: 1, value: "4" },
+                          { id: 2, value: "3" },
+                          { id: 3, value: "2" },
+                          { id: 1, value: "1" },
+                        ]}
+                        updateData={updateData}
+                        initial={initial}
+                      ></DropdownComponent>
+                    </td>
+                    <td>
+                      <button onClick={resetFilter}>Rest Filter</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </Table>
+              <Table>
+                <tbody>
+                  <tr>
+                    <td>
+                      <TableComponent
+                        header={header}
+                        data={inputData}
+                      ></TableComponent>
+                    </td>
+                  </tr>
+                </tbody>
+              </Table>
+            </Col>
+          </Row>
+        </Container>
+        <Container fluid>
+          <Footer></Footer>
+        </Container>
+      </Container>
     </div>
   );
 }
